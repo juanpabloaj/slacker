@@ -93,6 +93,12 @@ class Users(BaseAPI):
         assert presence in Presence.TYPES, 'Invalid presence type'
         return self.post('users.setPresence', params={'presence': presence})
 
+    def get_user_id(self, user_name):
+        for member in self.list().body['members']:
+            name, user_id = member['name'], member['id']
+            if name == user_name:
+                return user_id
+
 
 class Groups(BaseAPI):
     def create(self, name):
