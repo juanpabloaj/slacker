@@ -16,7 +16,7 @@ import json
 
 import requests
 
-from slacker.utils import id_from_list_dict
+from slacker.utils import get_item_id_by_name
 
 
 API_BASE_URL = 'https://slack.com/api/{api}'
@@ -97,7 +97,7 @@ class Users(BaseAPI):
 
     def get_user_id(self, user_name):
         members = self.list().body['members']
-        return id_from_list_dict(members, user_name)
+        return get_item_id_by_name(members, user_name)
 
 
 class Groups(BaseAPI):
@@ -217,7 +217,7 @@ class Channels(BaseAPI):
 
     def get_channel_id(self, channel_name):
         channels = self.list().body['channels']
-        return id_from_list_dict(channels, channel_name)
+        return get_item_id_by_name(channels, channel_name)
 
 
 class Chat(BaseAPI):
