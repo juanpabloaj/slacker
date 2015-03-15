@@ -28,6 +28,9 @@ Examples
     response = slack.users.list()
     users = response.body['members']
 
+    # Send a message to a user called alice
+    slack.chat.post_message('@alice', 'Hello Alice!')
+
     # Upload a file
     slack.files.upload('hello.txt')
 
